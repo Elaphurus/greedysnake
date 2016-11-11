@@ -1,3 +1,3 @@
 # greedysnake  
 Greedy Snake game  
-Game Entrance: View.java
+<b>Game Entrance</b> : View.java
