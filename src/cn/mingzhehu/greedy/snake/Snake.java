@@ -72,8 +72,7 @@ public class Snake {
 	}
 
 	private boolean isNeighbor(Node a, Node b) {
-		return Math.abs(a.getX() - b.getX())
-				+ Math.abs(a.getY() - b.getY()) < Constant.NODE_SIZE.getValue();
+		return Math.abs(a.getX() - b.getX()) + Math.abs(a.getY() - b.getY()) < Constant.NODE_SIZE.getValue();
 	}
 
 }

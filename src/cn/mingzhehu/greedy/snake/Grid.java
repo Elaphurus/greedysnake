@@ -111,31 +111,9 @@ public class Grid {
 		}
 	}
 
-	/**
-	 * Judge whether the point where food to be put is occupied. Food cannot be
-	 * on the snake body.
-	 * 
-	 * @return true when occupied.
-	 */
-	@SuppressWarnings("unused")
-	@Deprecated
-	// TODO Bad efficiency
-	private boolean isOccupied(int foodX, int foodY) {
-		for (int x = 0; x < width; x++) {
-			for (int y = 0; y < height; y++) {
-				if (Math.abs(foodX - x)
-						+ Math.abs(foodY - y) < Constant.NODE_SIZE.getValue()) {
-					return true;
-				} else {
-				}
-			}
-		}
-		return false;
-	}
-
 	private int getRandom(int min, int max) {
 		Random random = new Random();
-		int n = random.nextInt(max - min) + min;
+		int n = 10 * random.nextInt((max - min) / 10) + min;
 		return n;
 	}
 
@@ -148,8 +126,7 @@ public class Grid {
 	private boolean changeStatus(Node node) {
 		int x = node.getX();
 		int y = node.getY();
-		if (x > width || y > height || x == width || y == height || x < 0
-				|| y < 0 || x == 0 || y == 0) {
+		if (x > width || y > height || x == width || y == height || x < 0 || y < 0 || x == 0 || y == 0) {
 			return false;
 		} else {
 			if (status[x][y]) {
@@ -173,8 +150,7 @@ public class Grid {
 	}
 
 	private boolean intoWall(int x, int y, int borderX, int borderY) {
-		if (x > borderX || y > borderY || x == borderX || y == borderY || x == 0
-				|| y == 0 || x < 0 || y < 0) {
+		if (x > borderX || y > borderY || x == borderX || y == borderY || x == 0 || y == 0 || x < 0 || y < 0) {
 			return true;
 		} else {
 			return false;
@@ -182,7 +158,7 @@ public class Grid {
 	}
 
 	private boolean eatSelf(int headX, int headY, Snake snake) {
-		for (int i = 1; i < snake.getBody().size(); i++) {
+		for (int i = 2; i < snake.getBody().size(); i++) {
 			Node node = snake.getBody().get(i);
 			int x = node.getX();
 			int y = node.getY();
@@ -195,10 +171,8 @@ public class Grid {
 	}
 
 	public void showGameOverMessage() {
-		JOptionPane.showMessageDialog(null,
-				"Greedy End !" + "\n" + "Your Score : " + score + "\n"
-						+ "Bug feedback : humingzhework@163.com",
-				"Greedy Snake", JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(null, "Greedy End !" + "\n" + "Your Score : " + score + "\n" + "Bug feedback : humingzhework@163.com", "Greedy Snake",
+				JOptionPane.INFORMATION_MESSAGE);
 	}
 
 }
